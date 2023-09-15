@@ -88,7 +88,7 @@ func GrafanaHandler(c *gin.Context) {
 		return
 	}
 
-	_, err = channel.QueueDeclare(utils.Getenv("FATCAT_RABBITMQ_QUEUE", "incoming"), true, false, false, false, nil)
+	_, err = channel.QueueDeclare(utils.Getenv("FATCAT_RABBITMQ_QUEUE", "incoming"), false, false, false, false, nil)
 	if err != nil {
 		log.Println("[-] Couldn't declare the queue " + utils.Getenv("FATCAT_RABBITMQ_QUEUE", "incoming"))
 		defer connection.Close()
